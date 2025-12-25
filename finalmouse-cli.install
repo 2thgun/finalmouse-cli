@@ -1,0 +1,27 @@
+post_install() {
+    echo "Installing udev rules for Finalmouse..."
+
+    # Ensure rules directory exists
+    mkdir -p /etc/udev/rules.d
+
+    # Copy the udev rules file
+    install -m 644 "$pkgdir/usr/lib/udev/rules.d/99-finalmouse.rules" /etc/udev/rules.d/99-finalmouse.rules
+
+    # Reload udev rules
+    udevadm control --reload
+    udevadm trigger
+
+    echo "udev rules installed. You may need to unplug/replug your mouse."
+}
+
+pre_remove() {
+    echo "Removing Finalmouse udev rules..."
+
+    rm -f /etc/udev/rules.d/99-finalmouse.rules
+
+    # Reload udev rules
+    udevadm control --reload
+    udevadm trigger
+
+    echo "udev rules removed."
+}

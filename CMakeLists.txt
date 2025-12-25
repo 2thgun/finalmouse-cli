@@ -22,5 +22,7 @@ add_executable(finalmouse main.cpp finalmouse.hpp)
 target_link_libraries(finalmouse ${HIDAPI_LIBRARIES})
 
 # Explicitly disable debug flags
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g0 -DNO_DEBUG")
 set(CMAKE_CXX_FLAGS_DEBUG "")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG")
+set(CMAKE_BUILD_TYPE Release)

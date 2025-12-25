@@ -6,6 +6,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Set the build type to Release explicitly
 set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build" FORCE)
+set(CMAKE_BUILD_TYPE Release CACHE STRING "Build Type" FORCE)
+
 
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(HIDAPI REQUIRED hidapi-hidraw)
